@@ -226,7 +226,7 @@ Replace `<YOUR_ADDRESS>` with your actual address. This command confirms that yo
 Once you've confirmed your balance, follow these steps to create your validator:
 
 #### 6.1 Create Validator Configuration
-
+ Please add your own name for moniker ex torram-node
 ```bash
 # Get validator pubkey
 PUBKEY=$(torramd tendermint show-validator)
@@ -235,7 +235,7 @@ cat > validator.json << EOF
 {
     "pubkey": $(echo $PUBKEY),
     "amount": "1000000torram",
-    "moniker": "torram-node",
+    "moniker": <ADD YOUR OWN NAME HERE>,
     "commission-rate": "0.1",
     "commission-max-rate": "0.2",
     "commission-max-change-rate": "0.01",
