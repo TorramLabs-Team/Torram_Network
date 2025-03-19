@@ -205,7 +205,8 @@ sed -i.bak -e "s/trust_hash = \"\"/trust_hash = \"$TRUST_HASH\"/" $CONFIG_DIR/co
 ```bash
 torramd keys list --keyring-backend test
 ```
-**IMPORTANT!** 
+
+# <span style="color:red;">🔴 IMPORTANT!</span>
 
 Curently, the staking feature is an IOU. At this step, please provide the above generated address to the Torram team. The Torram team will send you IOU funds to complete the setup process. 
 
@@ -226,7 +227,9 @@ Replace `<YOUR_ADDRESS>` with your actual address. This command confirms that yo
 Once you've confirmed your balance, follow these steps to create your validator:
 
 #### 6.1 Create Validator Configuration
- Please add your own name for moniker ex torram-node
+
+<span style="color:red; font-weight:bold;">🔴 Please add your own name for moniker ex torram-node 🔴</span>
+
 ```bash
 # Get validator pubkey
 PUBKEY=$(torramd tendermint show-validator)
@@ -235,7 +238,7 @@ cat > validator.json << EOF
 {
     "pubkey": $(echo $PUBKEY),
     "amount": "1000torram",
-    "moniker": <add your node name here>,
+    "moniker": <ADD YOUR MONIKER NAME HERE>,
     "commission-rate": "0.1",
     "commission-max-rate": "0.2",
     "commission-max-change-rate": "0.01",
