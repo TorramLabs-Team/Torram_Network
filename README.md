@@ -68,6 +68,8 @@ The initial set of testnet validators are expected to submit the following price
 
 VWAP prices are calculated and stored in a Torram block every ~1 minute from these data sources. This is a default configuration currently, and there is no action required from Torram validators.
 
+Prices are sourced from the following: 
+
 **Crypto**
 - Binance
 - Coinbase
@@ -92,7 +94,7 @@ Every 15 mins, the relayer in each Torram node sends the same information as mer
 
 ## Prerequisites  
 
-This guide provides step-by-step instructions for setting up the Torram node using Docker image with multiple validators.
+This guide provides step-by-step instructions for setting up the Torram node using a Docker image.
 
 ### Hardware 
 
@@ -121,7 +123,7 @@ The Torram team can help you with testnet3 Bitcoin to get you started. Here are 
 - https://testnet-faucet.mempool.co
 - https://bitcoinfaucet.uo1.net
 
-Your Bitcoin Core testnet3 wallet will need to have a balance always, as the Torram node will send transactions to the Bitcoin network every hour. 
+Your Bitcoin Core testnet3 wallet will need to have a balance always, as the Torram node will send transactions to the Bitcoin network every 15 minutes. 
 
 ### Software
 
@@ -203,7 +205,8 @@ sed -i.bak -e "s/trust_hash = \"\"/trust_hash = \"$TRUST_HASH\"/" $CONFIG_DIR/co
 ```bash
 torramd keys list --keyring-backend test
 ```
-**IMPORTANT** 
+**IMPORTANT!** 
+
 Curently, the staking feature is an IOU. At this step, please provide the above generated address to the Torram team. The Torram team will send you IOU funds to complete the setup process. 
 
 **Please don't move forward without completing this step with the Torram team** 
