@@ -177,25 +177,25 @@ docker exec -it torram-validator sh
 
 ```bash
 # Fetch genesis from the genesis validator
-curl 35.232.130.169:26657/genesis | jq '.result.genesis' > ~/.torramd/config/genesis.json
+curl 34.57.91.248:26657/genesis | jq '.result.genesis' > ~/.torramd/config/genesis.json
 ```
 
 ### 2. Configure P2P Connection
 
 ```bash
 # Get validator ID and configure peers
-VALIDATOR_ID=$(curl -s http://35.232.130.169:26657/status | jq -r '.result.node_info.id')
+VALIDATOR_ID=$(curl -s http://34.57.91.248:26657/status | jq -r '.result.node_info.id')
 CONFIG_DIR="$HOME/.torramd/config"
-sed -i.bak'' "s/^seeds =.*/seeds = \"$VALIDATOR_ID@35.232.130.169:26656\"/" "$CONFIG_DIR/config.toml"
-sed -i.bak'' "s/^persistent_peers =.*/persistent_peers = \"$VALIDATOR_ID@35.232.130.169:26656\"/" "$CONFIG_DIR/config.toml"
+sed -i.bak'' "s/^seeds =.*/seeds = \"$VALIDATOR_ID@34.57.91.248:26656\"/" "$CONFIG_DIR/config.toml"
+sed -i.bak'' "s/^persistent_peers =.*/persistent_peers = \"$VALIDATOR_ID@34.57.91.248:26656\"/" "$CONFIG_DIR/config.toml"
 ```
 
 ### 3. Configure State Sync
 
 ```bash
 sed -i.bak'' 's|enable = true|enable = false|' "$CONFIG_DIR/config.toml"
-sed -i.bak'' 's|^rpc_servers =.*|rpc_servers = "http://35.232.130.169:26657,http://35.232.130.169:26657"|' "$CONFIG_DIR/config.toml"
-TRUST_HASH=$(curl -s "http://35.232.130.169:26657/block?height=$1" | jq -r .result.block_id.hash)
+sed -i.bak'' 's|^rpc_servers =.*|rpc_servers = "http://34.57.91.248:26657,http://34.57.91.248:26657"|' "$CONFIG_DIR/config.toml"
+TRUST_HASH=$(curl -s "http://34.57.91.248:26657/block?height=$1" | jq -r .result.block_id.hash)
 sed -i.bak -e "s/trust_height = 0/trust_height = 1/" $CONFIG_DIR/config.toml
 sed -i.bak -e "s/trust_hash = \"\"/trust_hash = \"$TRUST_HASH\"/" $CONFIG_DIR/config.toml
 ```
@@ -216,7 +216,7 @@ Curently, the staking feature is an IOU. At this step, please provide the above 
 Once you've provided your address to the Torram team and they've sent you funds, verify your balance:
 
 ```bash
-torramd query bank balances <YOUR_ADDRESS> --node tcp://35.232.130.169:26657
+torramd query bank balances <YOUR_ADDRESS> --node tcp://34.57.91.248:26657
 ```
 
 Replace `<YOUR_ADDRESS>` with your actual address. This command confirms that you have received the necessary funds to proceed. The verification process can take anywhere from 1 minute to 5 minutes to complete.
@@ -234,8 +234,8 @@ PUBKEY=$(torramd tendermint show-validator)
 cat > validator.json << EOF
 {
     "pubkey": $(echo $PUBKEY),
-    "amount": "1000000torram",
-    "moniker": <ADD YOUR OWN NAME HERE>,
+    "amount": "1000torram",
+    "moniker": <add your node name here>,
     "commission-rate": "0.1",
     "commission-max-rate": "0.2",
     "commission-max-change-rate": "0.01",
@@ -254,7 +254,7 @@ torramd tx staking create-validator validator.json \
   --gas-adjustment="1.5" \
   --fees=30000torram \
   --keyring-backend=test \
-  --node tcp://35.232.130.169:26657
+  --node tcp://34.57.91.248:26657
 ```
 After running this command, you will be prompted confirm transaction before signing and broadcasting [y/N]:
 message. Type "y" to confirm and proceed.
