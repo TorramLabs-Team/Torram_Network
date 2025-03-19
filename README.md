@@ -206,7 +206,7 @@ sed -i.bak -e "s/trust_hash = \"\"/trust_hash = \"$TRUST_HASH\"/" $CONFIG_DIR/co
 torramd keys list --keyring-backend test
 ```
 
-# <span style="color:red;">🔴 IMPORTANT!</span>
+## <span style="color:red;">🔴 IMPORTANT!</span>
 
 Curently, the staking feature is an IOU. At this step, please provide the above generated address to the Torram team. The Torram team will send you IOU funds to complete the setup process. 
 
