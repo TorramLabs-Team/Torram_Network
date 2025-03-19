@@ -228,7 +228,7 @@ Once you've confirmed your balance, follow these steps to create your validator:
 
 #### 6.1 Create Validator Configuration
 
-<span style="color:red; font-weight:bold;">🔴 Please add your own name for moniker ex torram-node 🔴</span>
+### <span style="color:red; font-weight:bold;">🔴 Please add your own name for moniker ex torram-node 🔴</span>
 
 ```bash
 # Get validator pubkey
