@@ -237,7 +237,7 @@ PUBKEY=$(torramd tendermint show-validator)
 cat > validator.json << EOF
 {
     "pubkey": $(echo $PUBKEY),
-    "amount": "1000torram",
+    "amount": "1000000torram",
     "moniker": <ADD YOUR MONIKER NAME HERE>,
     "commission-rate": "0.1",
     "commission-max-rate": "0.2",
