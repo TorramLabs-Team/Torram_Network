@@ -314,7 +314,7 @@ maxconnections=25
 
 # Testnet-specific settings
 [test]
-testnet=1
+testnet=3
 rest=1
 rpcuser=your_username
 rpcpassword=your_secure_password
